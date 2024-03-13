@@ -1,0 +1,94 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉ số BMI</title>
+    
+    <script>
+        function tinhBMI() {
+            var canNang = parseFloat(document.getElementById('canNang').value);
+            var chieuCao = parseFloat(document.getElementById('chieuCao').value);
+            var ketQuaElement = document.getElementById('ketQuaBMI');
+
+            if (isNaN(canNang) || isNaN(chieuCao) || canNang <= 0 || chieuCao <= 0) {
+                ketQuaElement.textContent = "Vui lòng nhập đúng định dạng và giá trị hợp lệ.";
+                return;
+            }
+
+            var bmi = canNang / Math.pow(chieuCao, 2);
+            ketQuaElement.textContent = "Chỉ số BMI của bạn là: " + bmi.toFixed(2);
+
+            // Đánh giá tình trạng cơ thể dựa trên chỉ số BMI
+            if (bmi < 18.5) {
+                ketQuaElement.textContent += " - Gầy";
+            } else if (bmi >= 18.5 && bmi < 25) {
+                ketQuaElement.textContent += " - Bình thường";
+            } else if (bmi >= 25 && bmi < 30) {
+                ketQuaElement.textContent += " - Thừa cân";
+            } 
+            else if (bmi >= 30 && bmi < 35) {
+                ketQuaElement.textContent += " - Béo phì độ I";
+            }
+            else if (bmi >= 35 && bmi < 39) {
+                ketQuaElement.textContent += " - Béo phì độ II";
+            }
+            else {
+                ketQuaElement.textContent += " - Béo phì độ III";
+            }
+        }
+    </script>
+</head>
+
+<style>
+    body {background-color: powderblue;}
+    
+
+    h1   {color: blue;}
+    p    {color: red;}
+   </style> 
+<style type="text/css">
+    div{
+        width:300px;
+        padding:10px;
+        border:5px solid rgb(84, 184, 247);
+        box-sizing:border-box;
+    }
+    .box1 {
+        background-color: white  
+    }
+    .box2 {
+        background-color: white  
+    }
+   
+    </style>
+<body>
+<center>
+   
+    <div class="box box1"><h1>Tính chỉ số BMI</h1> </div>
+
+    <form>
+        <div class="box box2">
+        <label for="canNang">Nhập cân nặng (kg):</label>
+        <input type="text" id="canNang" placeholder="Nhập số"> <br>
+
+        <label for="chieuCao">Nhập chiều cao (m):</label>
+        <input type="text" id="chieuCao" placeholder="Nhập số"> <br>
+      
+        <Label for="tuoi">Độ tuổi:</label> <br>
+        <input type="text" id="tuoi" name="tuoi">
+        </div>
+        <button type="button" onclick="tinhBMI()">Tính BMI</button>
+    </form>
+<br>
+    <div id="ketQuaBMI"></div>
+</center>
+</body>
+</html>
+
+</body>
+</html>
